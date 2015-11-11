@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y \
 		wget \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
-WORKDIR /tmp
+WORKDIR /tmp/build
 VOLUME /export
 
-COPY build.sh /
+COPY build.sh README.md /
 ENTRYPOINT ["/build.sh"]
