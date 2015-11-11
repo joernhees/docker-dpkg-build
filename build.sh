@@ -64,4 +64,12 @@ cd ..
 echo "copying resulting dpkg files:"
 cp -v * /export/ || true  # will fail because of source dir
 
+echo "creating package index..."
+cd /export
+dpkg-scanpackages ./ | gzip > Packages.gz
+echo "you should now be able to mount the /export in other docker containers."
+echo "if multiple packages with dependencies were built, it's easiest to install"
+echo "them with apt-get after inserting them as a source like this:"
+echo 'echo "deb file:/mountpoint ./" >> /etc/apt/sources.list && apt-get update'
+
 exec /bin/bash  # allow interactive mode...
