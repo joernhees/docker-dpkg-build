@@ -6,7 +6,7 @@ function usage {
 	exit 1
 }
 
-if [[ $# -lt 1 || $1 -eq 'help' || $1 -eq '-h' || $1 -eq '--help' ]]; then
+if [[ $# -lt 1 || "$1" = 'help' || "$1" = '-h' || "$1" = '--help' ]]; then
 	usage
 fi
 
